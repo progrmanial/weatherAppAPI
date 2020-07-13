@@ -44,7 +44,14 @@ rt.post("/register", (req, res) => {
                     newUser.password = hash;
                     newUser
                         .save()
-                        .then(user => res.json(user))
+                        .then(user => {
+                            const userResponse = {
+                                name: user.name,
+                                api_key: user.api_key,
+                                email: user.email
+                            };
+                            res.json(userResponse);
+                        })
                         .catch(err => console.log(err))
                 });
             });
@@ -52,6 +59,7 @@ rt.post("/register", (req, res) => {
     })
 });
 
+// 
 // @route POST api/users/login
 // @desc Authenticate User
 // @access Public
@@ -93,7 +101,7 @@ rt.post("/login", (req, res) => {
                         (err, token) => {
                             res.json({
                                 success: true,
-                                token: "Bearer " + token,
+                                // token: "Bearer " + token,
                                 api_key: payload.api_key
                             });
                         }
@@ -126,15 +134,6 @@ rt.get("/api", (req, res) => {
             fetch(url, setting)
             .then(response => response.json())
             .then(data => {
-
-                // const payload = {
-                //     user: {
-                //         name: user.name,
-                //         dateRegistered: user.date,
-                //         accessKey : token
-                //     },
-                //     WeatherData: data
-                // }
 
                 res.json({data});
             })

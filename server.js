@@ -10,15 +10,6 @@ const users = require("./routes/api/users");
 const app = express();
 
 
-// const corsConfig = {
-//   "origin": "*",
-//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   "preflightContinue": false,
-//   "optionsSuccessStatus": 204
-// }
-
-// app.use(cors(corsConfig));
-// Bodyparser middleware
 app.use(
 	bodyParser.urlencoded({
 		extended: false
