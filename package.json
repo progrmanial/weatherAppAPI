@@ -4,12 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "clt-install": "npm install --prefix clt",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "clt": "npm start --prefix clt",
-    "dev": "concurrently \"npm run server\" \"npm run clt\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix clt && npm run build --prefix clt"
   },
   "author": "Imran Saadullah Olawale",
   "license": "MIT",
